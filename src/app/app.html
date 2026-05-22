@@ -1,0 +1,150 @@
+<div class="main-section">
+  <header class="header">
+    <div class="container">
+      <div class="header-logo">
+        <a href="/"><img src="images/logo.png" alt="Логотип"></a>
+      </div>
+      <nav class="header-menu" [class.open]="menuOpen" id="header-menu">
+        <div class="close" (click)="closeMenu()">
+          <svg width="34" height="26" viewBox="0 0 34 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.65387" y="0.135468" width="40" height="2" transform="rotate(37.1104 1.65387 0.135468)" fill="white"/>
+            <rect width="40" height="2" transform="matrix(-0.797474 0.603353 0.603353 0.797474 32.3461 0.135468)" fill="white"/>
+          </svg>
+        </div>
+        <ul>
+          <li><a href="#products" (click)="scrollTo('products', $event)">Пироженки</a></li>
+          <li><a href="#about" (click)="scrollTo('about', $event)">О нас</a></li>
+          <li><a href="#order" (click)="scrollTo('order', $event)">Оформить заказ</a></li>
+        </ul>
+      </nav>
+      <div class="header-tel">
+        <a [href]="phoneLink">{{ phone }}</a>
+      </div>
+      <div class="burger" id="burger" (click)="openMenu()">
+        <svg width="40" height="22" viewBox="0 0 40 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="2" fill="white"/>
+          <rect y="10" width="40" height="2" fill="white"/>
+          <rect y="20" width="40" height="2" fill="white"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+  <section class="main">
+    <div class="container">
+      <div class="main-info">
+        <h1>Мягкие французские пироженки Macaroons</h1>
+        <div class="main-text">
+          Побалуйте себя и своих близких самыми вкусными и ароматными домашними пироженками Macaroon!
+        </div>
+        <div class="main-cta">
+          <button type="button" class="button" (click)="scrollTo('products')">Выбрать макарун</button>
+        </div>
+      </div>
+      <div class="main-image">
+        <img src="images/main.png" alt="Главный баннер">
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-info">
+      <div class="about-text">
+        <h2 class="common-titles">Мы печём для вас вкуснейшие макаруны уже более 10 лет</h2>
+        <p>
+          Все пироженки мы готовим только из натуральных и качественных продуктов, без консервантов,
+          ароматизаторов, красителей. Используем в приготовлении сливочное масло 82,5%, без дрожжей,
+          маргарина, разрыхлителей и улучшителей муки.
+        </p>
+      </div>
+      <div class="about-image">
+        <img src="images/about-img.png" alt="Макаруны">
+      </div>
+    </div>
+    <div class="about-items">
+      <div class="about-item" *ngFor="let advantage of advantages; let i = index">
+        <div class="about-item-num">{{ i + 1 }}</div>
+        <span>{{ advantage.title }}</span>
+        <p>{{ advantage.text }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="container">
+    <h2 class="common-titles">Выберите свой макарун</h2>
+    <div class="products-items">
+      <div class="products-item" *ngFor="let product of products">
+        <div class="products-item-image">
+          <img [src]="product.image" [alt]="product.alt">
+        </div>
+        <div class="products-item-detail">
+          <div class="products-item-title">{{ product.title }}</div>
+          <div class="products-item-extra">
+            <div class="products-item-info">
+              <div class="products-item-weight">{{ product.weight }}</div>
+              <div class="products-item-price">{{ product.price }}</div>
+            </div>
+            <button type="button" class="button" (click)="orderItem(product.title)">Заказать</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="order" id="order">
+  <div class="container">
+    <div class="order-block-image">
+      <img src="images/macaron.png" alt="Макаруны" class="order-image">
+    </div>
+    <div class="order-block">
+      <div class="order-form">
+        <div class="common-titles">Закажите макарун!</div>
+        <div class="order-form-text">
+          Выберите понравившийся макарун, заполните форму и ожидайте звонка нашего пекаря!
+        </div>
+        <div class="order-form-inputs">
+          <label for="product">Ваш выбор</label>
+          <input
+            type="text"
+            id="product"
+            placeholder="Напишите, что хотите заказать..."
+            [(ngModel)]="orderProduct"
+          >
+          <label for="name">Заполните данные для заказа</label>
+          <input type="text" placeholder="Ваше имя" id="name">
+          <input type="text" placeholder="+375 (__) ___ - __ - __" id="phone">
+          <button type="button" class="button">Оформить заказ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-left">
+      <div class="logo">
+        <a href="/"><img src="images/logo.png" alt="Логотип"></a>
+      </div>
+      <div class="rights">Все права защищены, 2020</div>
+    </div>
+    <div class="footer-center">
+      <a [href]="instagramLink" target="_blank" rel="noopener noreferrer">
+        <img src="images/instagram.png" alt="Insta">
+        Мы в Instagram
+      </a>
+    </div>
+    <div class="footer-right">
+      <a [href]="phoneLink">{{ phone }}</a>
+    </div>
+  </div>
+</footer>
+
+<div class="gift" *ngIf="showPresent">
+  <div class="gift-message">Оформите заказ и получите подарок!</div>
+  <img src="images/present.png" alt="">
+</div>

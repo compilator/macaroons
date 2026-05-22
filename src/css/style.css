@@ -1,0 +1,532 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+@font-face {
+    font-family: Gilroy;
+    src: url("/fonts/gilroy-regular.ttf");
+}
+@font-face {
+    font-family: GilroyMedium;
+    src: url("/fonts/gilroy-medium.ttf");
+}
+@font-face {
+    font-family: GilroyBold;
+    src: url("/fonts/gilroy-bold.ttf");
+}
+@font-face {
+    font-family: GilroyExtraBold;
+    src: url("/fonts/gilroy-extrabold.ttf");
+}
+@font-face {
+    font-family: Tavolga;
+    src: url("/fonts/tavolga-free.ttf");
+}
+body {
+    background: #eba8b1;
+    font-family: Gilroy, sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+a {
+    cursor: pointer;
+}
+/* Блок хедер */
+.header {
+    padding: 36px 0 30px;
+}
+.header-menu ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+.header-menu ul li {
+    margin-right: 40px;
+    padding: 3px 0 7px;
+}
+.header-menu ul li a:hover{
+    border-bottom: 2px solid #770b1d;
+}
+.header-menu ul li a {
+    font-family: GilroyMedium, sans-serif;
+    font-size: 14px;
+    color: rgb(119, 11, 29);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.5s ease;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-tel a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: GilroyBold, sans-serif;
+}
+.burger {
+    display:none;
+}
+/* Главный блок */
+.main-section {
+    overflow: hidden;
+}
+.main {
+    padding: 125px 0 108px;
+}
+.main .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-info {
+    max-width: 580px;
+    z-index: 6;
+    position: relative;
+    z-index: 2;
+}
+.main-info h1 {
+    font-size: 55px;
+    font-family: Tavolga, sans-serif;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    margin-bottom: 50px;
+    line-height: 1.1;
+}
+.main-text  {
+    font-size: 18px;
+    font-family: Tavolga, sans-serif;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    max-width: 360px;
+    line-height: 1.45;
+    margin-bottom: 77px;
+}
+.main-cta {
+    margin-top: 60px;
+}
+.button {
+    font-family: GilroyBold, sans-serif;
+    background-image: -moz-linear-gradient( 90deg, rgb(113,8,30) 0%, rgb(215,72,92) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(113,8,30) 0%, rgb(215,72,92) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(113,8,30) 0%, rgb(215,72,92) 100%);
+    border-radius: 35px;
+    border: none;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    position: relative;
+    z-index: 5;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+.button:hover {
+    box-shadow: 0 5px 9px 1px rgba(130, 19, 40, 0.5);
+}
+.main-cta .button {
+    padding: 18px 45px 20px;
+    height: 60px;
+    box-sizing: border-box;
+}
+.main-image {
+    position: relative;
+    display: inline-block;
+    overflow: visible;
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.main-image::before,
+.main-image::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 500px;
+    height: 500px;
+    background: none;
+    border-radius: 50%;
+    border: 3px solid #dc455b;
+    animation: pulse 3s infinite ease-in-out;
+    z-index: 0;
+}
+
+.main-image::after {
+    width: 530px;
+    height: 530px;
+    animation-delay: 2.2s;
+    animation: pulse2 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0;
+    }
+}
+@keyframes pulse2 {
+    20% {
+        transform: translate(-50%, -50%) scale(0.2);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0;
+    }
+}
+/* Блок о нас */
+.about  {
+    background: #ffefef;
+}
+.about .container {
+    padding-top: 119px;
+    padding-bottom: 126px;
+}
+.about-info {
+    display: flex;
+    justify-content: space-between;
+}
+.about-text h2 {
+    margin-bottom: 50px;
+}
+.about-text {
+    max-width: 480px;
+    margin-bottom: 64px;
+}
+.about-text p {
+    font-size: 18px;
+    color: rgb(51, 25, 7);
+    line-height: 1.5;
+}
+.about-text p {
+    max-width: 396px;
+}
+.about-image {
+    margin-top: 60px;
+}
+.about-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: self-start;
+}
+.about-item {
+    max-width: 209px;
+    box-sizing: border-box;
+}
+.about-item-num {
+    font-family: GilroyExtraBold, sans-serif;
+    font-size: 60px;
+    color: rgb(255, 255, 255);
+    background: #821328;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    padding-top: 13px;
+    box-sizing: border-box;
+    margin-bottom: 13px;
+    transition: all .7s ease;
+}
+.about-item:hover .about-item-num {
+     color: #821328;
+     background: #eba8b1;
+}
+.about-item span {
+    font-family: GilroyBold, sans-serif;
+    font-size: 20px;
+    color: rgb(51, 25, 7);
+    white-space: nowrap;
+}
+.about-item p {
+    margin-top: 20px;
+    font-size: 15px;
+    color: rgb(51, 25, 7);
+    line-height: 1.35;
+}
+/* Блок продукция */
+.products {
+    padding: 120px 0 130px;
+}
+.products h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 80px;
+}
+.products-items  {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+.products-items  {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.products-item {
+    width: 260px;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    margin: 10px 15px;
+}
+.products-item-image {
+    height: 100px;
+}
+.products-item-image img {
+    transition: all .5s ease;
+}
+.products-item:hover img {
+    transform: scale(1.1);
+}
+.products-item-weight {
+    margin-bottom: 10px;
+}
+.products-item-weight::after {
+    content: ' шт.';
+}
+.products-item-price::after {
+    content: ' руб.';
+}
+.products-item-image img {
+    top: -60px;
+    position: relative;
+    max-wight: 100%;
+}
+.products-item-detail {
+    padding: 0 17px 25px;
+}
+.products-item-title {
+    font-size: 18px;
+    font-family: Tavolga, sans-serif;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-bottom: 27px;
+}
+.products-item-info {
+    text-align: left;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+}
+.products-item-extra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.products-item-extra .button {
+    padding: 13px 30px 14px;
+    height: 50px;
+    box-sizing: border-box;
+}
+/* Форма заказа */
+.order {
+    background: #ffefef;
+}
+.order .container {
+    padding-top: 100px;
+    padding-bottom: 90px;
+    display: flex;
+}
+.order-form {
+    max-width: 415px;
+    background-image: url("/images/strawberry2.png");
+    background-repeat: no-repeat;
+    background-position: 90% 455px;
+    animation: float 2s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+    0% {
+        background-position: 90% 435px;
+    }
+    100% {
+        background-position: 90% 455px;
+    }
+}
+.common-titles {
+    font-size: 45px;
+    font-family: Tavolga, sans-serif;
+    font-weight: 500;
+    color: rgb(51, 25, 7);
+    line-height: 1.3;
+}
+.order .common-titles{
+    margin-bottom: 40px;
+    text-align: left;
+}
+.order-form-text {
+    font-size: 18px;
+    color: rgb(51, 25, 7);
+    line-height: 1.5;
+    text-align: left;
+    margin-bottom: 40px;
+}
+.order-form-inputs input, .order-form-inputs label, .order-form .button {
+    display: block;
+    width: 295px;
+    box-sizing: border-box;
+}
+.order-form-inputs label {
+    margin-bottom: 23px;
+    font-size: 18px;
+    font-family: GilroyBold, sans-serif;
+    color: rgb(18, 10, 6);
+}
+.order-form-inputs input {
+    border-width: 1px;
+    border-color: rgb(130, 19, 40);
+    border-style: solid;
+    border-radius: 30px;
+    padding: 15px 24px;
+    margin-bottom: 15px;
+    height: 60px;
+}
+.order-form-inputs input#product {
+    margin-bottom: 35px;
+}
+.order-form-inputs input::placeholder {
+    font-size: 15px;
+    font-family: GilroyBold, sans-serif;
+    color: rgb(118, 12, 34);
+    font-weight: bold;
+}
+.order-form .button {
+    padding: 18px 45px 20px;
+    height: 60px;
+}
+.order-block-image {
+    background-image: url("/images/strawberry.png");
+    background-repeat: no-repeat;
+    background-position: 5px 70px;
+    animation: float2 2.5s ease-in-out infinite alternate;
+}
+@keyframes float2 {
+    0% {
+        background-position: 5px 50px;
+    }
+    100% {
+        background-position: 5px 70px;
+    }
+}
+.order-image {
+    padding-top: 100px;
+    margin-right: 160px;
+    margin-left: 30px;
+}
+/* Футер */
+.footer {
+    background: #c0707c;
+}
+.footer .container {
+    padding: 88px 15px 61px;
+    display: flex;
+    justify-content: space-between;
+}
+.footer-left .rights {
+    margin-top: 19px;
+    font-size: 12px;
+    color: rgb(227, 172, 180);
+}
+
+.footer-center {
+    font-family: GilroyBold, sans-serif;
+    text-align: center;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+.footer-center a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+.footer-center img {
+    display: block;
+    margin: 0 auto 14px;
+}
+.footer-right a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: GilroyBold, sans-serif;
+}
+.gift {
+    background: radial-gradient(#730a1f, #bd374c);;
+    border-radius: 50%;
+    padding: 18px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 90px;
+    height: 90px;
+    box-sizing: border-box;
+    z-index: 15;
+}
+.gift:hover {
+    box-shadow: 0px 0px 12.6px 2.4px rgba(130, 19, 40, 1);
+}
+.gift-message {
+     opacity: 0;
+     transform: translateY(20px);
+     display: block;
+     background: white;
+     border-radius: 10px;
+     border: 2px solid #770a1d;
+     color: #770a1d;
+     position: fixed;
+     right: 125px;
+     bottom: 35px;
+     width: 140px;
+     font-size: 15px;
+     padding: 8px 14px;
+     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+.gift-message::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    left: 168px;
+    border: 11px solid transparent;
+    border-left: 12px solid #770a1d;
+}
+
+.gift-message::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 17px;
+    left: 167.5px;
+    border: 9px solid transparent;
+    border-left: 9px solid #fff;
+}
+
+.gift:hover .gift-message {
+    opacity: 1;
+    transform: translateY(0);
+}
+.burger, .close {
+    display: none;
+}
