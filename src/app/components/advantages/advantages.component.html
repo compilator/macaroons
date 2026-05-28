@@ -1,0 +1,7 @@
+<div class="about-items">
+  <div class="about-item" *ngFor="let advantage of advantages; let i = index">
+    <div class="about-item-num">{{ i + 1 }}</div>
+    <span>{{ advantage.title }}</span>
+    <p>{{ advantage.text | advantageText }}</p>
+  </div>
+</div>

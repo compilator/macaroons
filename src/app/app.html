@@ -18,7 +18,7 @@
         </ul>
       </nav>
       <div class="header-tel">
-        <a [href]="phoneLink">{{ phone }}</a>
+        <a [href]="phoneLink">{{ phone | phoneFormat }}</a>
       </div>
       <div class="burger" id="burger" (click)="openMenu()">
         <svg width="40" height="22" viewBox="0 0 40 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +37,7 @@
           Побалуйте себя и своих близких самыми вкусными и ароматными домашними пироженками Macaroon!
         </div>
         <div class="main-cta">
-          <button type="button" class="button" (click)="scrollTo('products')">Выбрать макарун</button>
+          <button type="button" class="button" appButtonEffects (click)="scrollTo('products')">Выбрать макарун</button>
         </div>
       </div>
       <div class="main-image">
@@ -62,13 +62,7 @@
         <img src="images/about-img.png" alt="Макаруны">
       </div>
     </div>
-    <div class="about-items">
-      <div class="about-item" *ngFor="let advantage of advantages; let i = index">
-        <div class="about-item-num">{{ i + 1 }}</div>
-        <span>{{ advantage.title }}</span>
-        <p>{{ advantage.text }}</p>
-      </div>
-    </div>
+    <app-advantages [advantages]="advantages"></app-advantages>
   </div>
 </section>
 
@@ -76,21 +70,11 @@
   <div class="container">
     <h2 class="common-titles">Выберите свой макарун</h2>
     <div class="products-items">
-      <div class="products-item" *ngFor="let product of products">
-        <div class="products-item-image">
-          <img [src]="product.image" [alt]="product.alt">
-        </div>
-        <div class="products-item-detail">
-          <div class="products-item-title">{{ product.title }}</div>
-          <div class="products-item-extra">
-            <div class="products-item-info">
-              <div class="products-item-weight">{{ product.weight }}</div>
-              <div class="products-item-price">{{ product.price }}</div>
-            </div>
-            <button type="button" class="button" (click)="orderItem(product.title)">Заказать</button>
-          </div>
-        </div>
-      </div>
+      <app-product-card
+        *ngFor="let product of products"
+        [product]="product"
+        (addedToCart)="orderItem($event)">
+      </app-product-card>
     </div>
   </div>
 </section>
@@ -117,7 +101,7 @@
           <label for="name">Заполните данные для заказа</label>
           <input type="text" placeholder="Ваше имя" id="name">
           <input type="text" placeholder="+375 (__) ___ - __ - __" id="phone">
-          <button type="button" class="button">Оформить заказ</button>
+          <button type="button" class="button" appButtonEffects>Оформить заказ</button>
         </div>
       </div>
     </div>
@@ -139,12 +123,13 @@
       </a>
     </div>
     <div class="footer-right">
-      <a [href]="phoneLink">{{ phone }}</a>
+      <a [href]="phoneLink">{{ phone | phoneFormat }}</a>
     </div>
   </div>
 </footer>
 
 <div class="gift" *ngIf="showPresent">
-  <div class="gift-message">Оформите заказ и получите подарок!</div>
-  <img src="images/present.png" alt="">
+  <div class="gift-message">{{ cartTotalText }} руб.</div>
+  <img src="images/cart.png" alt="Корзина">
+  <div class="gift-count">{{ cartService.count() }}</div>
 </div>
