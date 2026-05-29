@@ -309,9 +309,6 @@ a {
 .products-item-weight::after {
     content: ' шт.';
 }
-.products-item-price::after {
-    content: ' руб.';
-}
 .products-item-image img {
     top: -60px;
     position: relative;
@@ -473,16 +470,21 @@ a {
     font-family: GilroyBold, sans-serif;
 }
 .gift {
-    background: radial-gradient(#730a1f, #bd374c);;
+    background: radial-gradient(#730a1f, #bd374c);
     border-radius: 50%;
-    padding: 18px;
+    padding: 20px;
     position: fixed;
-    right: 20px;
+    right: 10px;
     bottom: 20px;
     width: 90px;
     height: 90px;
     box-sizing: border-box;
     z-index: 15;
+}
+.gift img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 .gift:hover {
     box-shadow: 0px 0px 12.6px 2.4px rgba(130, 19, 40, 1);
@@ -496,19 +498,22 @@ a {
      border: 2px solid #770a1d;
      color: #770a1d;
      position: fixed;
-     right: 125px;
+     right: 115px;
      bottom: 35px;
      width: 140px;
      font-size: 15px;
-     padding: 8px 14px;
+     line-height: 1;
+     text-align: center;
+     padding: 18px 20px;
      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+     font-family: GilroyMedium, sans-serif;
 }
 .gift-message::before {
     content: '';
     display: inline-block;
     position: absolute;
     top: 15px;
-    left: 168px;
+    left: 180px;
     border: 11px solid transparent;
     border-left: 12px solid #770a1d;
 }
@@ -518,11 +523,26 @@ a {
     display: inline-block;
     position: absolute;
     top: 17px;
-    left: 167.5px;
+    left: 180px;
     border: 9px solid transparent;
     border-left: 9px solid #fff;
 }
-
+.gift-count {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #770a1d;
+    font-family: GilroyBold, sans-serif;
+    font-size: 16px;
+    color: #770a1d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .gift:hover .gift-message {
     opacity: 1;
     transform: translateY(0);

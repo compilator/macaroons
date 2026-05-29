@@ -2,31 +2,29 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, inject, PLATFORM_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgForOf, NgIf } from '@angular/common';
+import { CartService } from './services/cart.service';
+import { AdvantagesComponent } from './components/advantages/advantages.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { Product } from './models/product.model';
+import { ButtonEffectsDirective } from './directives/button-effects.directive';
+import { PhoneFormatPipe } from './pipes/phone-format.pipe';
 
 interface Advantage {
   title: string;
   text: string;
 }
 
-interface Product {
-  image: string;
-  alt: string;
-  title: string;
-  weight: string;
-  price: string;
-}
-
 @Component({
   selector: 'app-root',
-  imports: [NgForOf, NgIf, FormsModule],
+  imports: [NgForOf, NgIf, FormsModule, AdvantagesComponent, ProductCardComponent, ButtonEffectsDirective, PhoneFormatPipe],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
 export class App {
   private readonly platformId = inject(PLATFORM_ID);
+  readonly cartService = inject(CartService);
 
-  phone = '+375 (29) 368-98-68';
-  phoneLink = 'tel:+375293689868';
+  phone = '375293689868';
   instagramLink = 'https://www.instagram.com/';
 
   showPresent = true;
@@ -59,28 +57,28 @@ export class App {
       alt: 'Макарун1',
       title: 'Макарун с малиной',
       weight: '1',
-      price: '1,70',
+      price: 170,
     },
     {
       image: 'images/prod2.png',
       alt: 'Макарун2',
       title: 'Макарун с манго',
       weight: '1',
-      price: '1,70',
+      price: 170,
     },
     {
       image: 'images/prod3.png',
       alt: 'Макарун3',
       title: 'Пирог с ванилью',
       weight: '1',
-      price: '1,70',
+      price: 170,
     },
     {
       image: 'images/prod4.png',
       alt: 'Макарун4',
       title: 'Пирог с фисташками',
       weight: '1',
-      price: '1,70',
+      price: 170,
     },
   ];
 
@@ -103,7 +101,16 @@ export class App {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   }
 
-  orderItem(title: string): void {
-    this.orderProduct = title.toUpperCase();
+  get cartTotalText(): string {
+    return this.cartService.total().toString();
+  }
+
+  get phoneLink(): string {
+    return `tel:+${this.phone}`;
+  }
+
+  orderItem(product: Product): void {
+    this.orderProduct = product.title.toUpperCase();
+    alert(`${product.title} добавлен в корзину!`);
   }
 }

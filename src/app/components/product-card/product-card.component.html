@@ -1,0 +1,15 @@
+<div class="products-item">
+  <div class="products-item-image">
+    <img [src]="product.image" [alt]="product.alt">
+  </div>
+  <div class="products-item-detail">
+    <div class="products-item-title">{{ product.title }}</div>
+    <div class="products-item-extra">
+      <div class="products-item-info">
+        <div class="products-item-weight">{{ product.weight }}</div>
+        <div class="products-item-price">{{ product.price / 100 | currency:'':'':'1.2-2' }} руб.</div>
+      </div>
+      <button type="button" class="button" appButtonEffects (click)="addToCart()">Заказать</button>
+    </div>
+  </div>
+</div>
